@@ -3,7 +3,6 @@ public:
     int romanToInt(string s) {
         // MCMXCIV
         // 1000+900 +90+4
-        
         int ans = 0;
         int length = s.length();
         vector< pair<char,int> > rn;
