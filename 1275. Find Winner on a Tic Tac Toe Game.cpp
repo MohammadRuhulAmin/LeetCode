@@ -29,9 +29,10 @@ string tictactoe(vector<vector<int> >& moves) {
 		cout << endl;
 	}
 	
-	    if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')return "A";
+	     if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')return "A";
         if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')return "A";
         if(board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')return "A";
+        if(board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X')return "A";
         if(board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X')return "A";
         if(board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X')return "A";
         if(board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X')return "A";
@@ -67,12 +68,12 @@ int main(){
 	
 
 	
-//	for(int i = 0;i<mvs;i++){
-//		for(int j = 0;j<2;j++){
-//			cout << moves[i][j] <<" ";
-//		}
-//		cout << endl;
-//	}
+	for(int i = 0;i<mvs;i++){
+		for(int j = 0;j<2;j++){
+			cout << moves[i][j] <<" ";
+		}
+		cout << endl;
+	}
 	
 	cout << tictactoe(moves);
 	
