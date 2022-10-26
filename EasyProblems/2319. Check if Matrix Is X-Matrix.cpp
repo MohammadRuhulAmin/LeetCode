@@ -22,8 +22,8 @@ bool checkXMatrix(vector<vector<int> >& grid) {
         }
         if(ld && rd && nz)return true;
         return false;
-        
-    }
+}
+
 
 int main(){
 	vector<vector<int> >mat;
