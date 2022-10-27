@@ -4,7 +4,7 @@ using namespace std;
 bool isToeplitzMatrix(vector<vector<int> >& matrix) {
     int col = matrix[0].size();
     int row = matrix.size();
-    cout << row << " " << col <<  "  row col " << endl;
+    //cout << row << " " << col <<  "  row col " << endl;
     vector<pair<int,int> >root;
     for(int i = 0;i<row;i++){
     	for(int j = 0;j<col;j++){
