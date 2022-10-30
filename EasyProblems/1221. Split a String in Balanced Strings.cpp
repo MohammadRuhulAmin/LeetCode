@@ -9,13 +9,12 @@ int balancedStringSplit(string s) {
     	if(s[i] == 'R')sR +=s[i];
     	if(s[i] == 'L')sL +=s[i];
     	if(sR.length() == sL.length()){
-    		cout << sR << " " << sL << endl;
+    		//cout << sR << " " << sL << endl;
 			count++;
     		sR = "";
     		sL = "";
 		}
 	}
-	cout << endl;
 	return count;
     
 }
