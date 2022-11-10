@@ -27,25 +27,25 @@ int main(){
 	for(int i = 0;i<3;i++){
 		cout << age_name[i].first << " " << age_name[i].second << endl;
 	}
-//	
-//	int length;
-//	cin >> length;
-//	pair<string,int>myInfo[length];
-//	for(int i = 0;i<length;i++){
-//		cin >> myInfo[i].first >> myInfo[i].second;
-//	}
-//	
-//	cout << endl;
-//	for(int i = 0;i<length;i++){
-//		cout << myInfo[i].first << " " << myInfo[i].second << endl;
-//	}
-//	
-//	swap(myInfo[1],myInfo[2]);
-//	cout << endl;
-//	for(int i = 0;i<length;i++){
-//		cout << myInfo[i].first << " " << myInfo[i].second << endl;
-//	}
-//	
+	
+	int length;
+	cin >> length;
+	pair<string,int>myInfo[length];
+	for(int i = 0;i<length;i++){
+		cin >> myInfo[i].first >> myInfo[i].second;
+	}
+	
+	cout << endl;
+	for(int i = 0;i<length;i++){
+		cout << myInfo[i].first << " " << myInfo[i].second << endl;
+	}
+	
+	swap(myInfo[1],myInfo[2]);
+	cout << endl;
+	for(int i = 0;i<length;i++){
+		cout << myInfo[i].first << " " << myInfo[i].second << endl;
+	}
+	
 	
 	vector<pair<int,string> >nameInf;
 	int lengthx;cin >> lengthx;
