@@ -2,26 +2,45 @@
 using namespace std;
 int islandPerimeter(vector<vector<int> >& grid) {
 	int perimeter = 0;
-    int length = grid[0].size();
-    for(int i = 0;i<grid.size();i++){
-    	for(int j = 0;j<grid[i].size();j++){
-    		if(!grid[i][j]){
-    			cout << "1";
-    			if(grid[i-1][j] == 1 || grid[i][j-1] == 1 || grid[i+1][j] == 1 || grid[i][j+1] == 1)perimeter++;
+	int size = grid[0].size();
+	for(int i = 0;i<size;i++){
+		if(grid[0][i] == 1)perimeter++;
+	}
+	for(int i = 0;i<size;i++){
+		if(grid[i][0] == 1)perimeter++;
+	}
+	for(int i = 0;i<size;i++){
+		if(grid[size-1][i] == 1)perimeter++;
+	}
+	for(int i = 0;i<size;i++){
+		if(grid[i][size-1] == 1)perimeter++;
+	}
+	
+	
+	for(int i = 0;i<size;i++){
+		for(int j = 0;j<size;j++){
+			if(grid[i][j] == 0){
+				if( i-1>=0 && grid[i-1][j] == 1)perimeter++;
+				if(i+1<size && grid[i+1][j] == 1)perimeter++;
+				if(j-1>=0 && grid[i][j-1] == 1)perimeter++;
+				if(j+1<size && grid[i][j+1] == 1)perimeter++;
 			}
 		}
-		
 	}
+	
+
+	
 	return perimeter;
 	
 }
 /*
-[[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
 4
 0 1 0 0
 1 1 1 0
 0 1 0 0
 1 1 0 0
+
+
 */
 
 
