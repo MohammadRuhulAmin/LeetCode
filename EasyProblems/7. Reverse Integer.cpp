@@ -2,9 +2,8 @@
 using namespace std;
 
 int reverse(int x){
-	if(x > 2147483641)return 0;
-	// 2147483647
-	int n = 0;
+	
+	long n = 0;
 	bool isNegNum = false;
 	if(x<0)isNegNum = true;
 	x = abs(x);
@@ -14,6 +13,8 @@ int reverse(int x){
 		n+=i;
 		x/=10;
 	}
+	// checking if the number is in 32 bits range or not !
+	if(n>INT_MAX || n <INT_MIN) return 0; 
 	if(isNegNum)n*=-1;
 	return n;
 	
