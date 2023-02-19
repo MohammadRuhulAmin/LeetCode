@@ -17,7 +17,6 @@ bool rotateString(string s, string goal) {
 			for(int i = r;i<len;i++)rs+=goal[i];
 			for(int i = l;i<r;i++)ls += goal[i];
 			ts = rs + ls;
-			cout << ts << endl;
 			if(ts == s)return true;
 			
 			r++;
