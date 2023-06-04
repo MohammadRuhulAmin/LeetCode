@@ -1,9 +1,6 @@
    #include<bits/stdc++.h>
    using namespace std;
    
-   /*
-   		"    " this is a string "  " 
-   */
    
    int countSegments(string s) {
         int segment = 0;
