@@ -41,3 +41,11 @@ ON t1.id = t2.customerID
 where t2.customerId is NULL 
 
 
+--584. Find Customer Referee
+
+select name from Customer 
+where 
+referee_id is NULL
+OR
+referee_id  !=2
+
