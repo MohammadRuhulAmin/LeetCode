@@ -34,3 +34,10 @@ ON t1.email = t2.email
 and t1.id<t2.id
 
 
+--183. Customers Who Never Order
+SELECT name as Customers from Customers t1
+LEFT JOIN Orders t2
+ON t1.id = t2.customerID
+where t2.customerId is NULL 
+
+
