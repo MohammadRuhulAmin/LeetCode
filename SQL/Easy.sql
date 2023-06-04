@@ -32,3 +32,5 @@ t2.bonus < 1000 OR t2.bonus is NULL
 Delete t2 from Person t1 JOIN Person t2
 ON t1.email = t2.email
 and t1.id<t2.id
+
+
