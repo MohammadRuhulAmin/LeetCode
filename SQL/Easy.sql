@@ -66,3 +66,14 @@ SELECT x,y,z,
 IF(x+y>z and y+z>x and z+x>y,"Yes","No") as triangle
 FROM Triangle
 
+
+--619. Biggest Single Number
+WITH NumList AS (
+
+  SELECT num
+  FROM MyNumbers
+  GROUP BY num
+  HAVING count(*) = 1
+
+) SELECT MAX(num) as num FROM NumList
+
