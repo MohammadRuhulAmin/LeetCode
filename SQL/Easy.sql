@@ -87,3 +87,12 @@ manager_id NOT IN (
   SELECT employee_id FROM Employees
 ) 
 ORDER BY employee_id asc
+
+
+--1327. List the Products Ordered in a Period
+SELECT t1.product_name,sum(t2.unit) as unit FROM
+Products t1 JOIN Orders t2
+ON t1.product_id = t2.product_id 
+WHERE t2.order_date LIKE '2020-02%'
+GROUP BY t1.product_id 
+HAVING SUM(t2.unit)>=100
