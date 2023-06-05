@@ -96,3 +96,14 @@ ON t1.product_id = t2.product_id
 WHERE t2.order_date LIKE '2020-02%'
 GROUP BY t1.product_id 
 HAVING SUM(t2.unit)>=100
+
+
+
+--1075. Project Employees I
+SELECT t1.project_id,ROUND(avg(t2.experience_years),2) as average_years FROM 
+Project t1
+LEFT JOIN
+Employee t2
+ON t1.employee_id = t2.employee_id
+GROUP BY
+t1.project_id
