@@ -1,7 +1,7 @@
 #LeetCode  
 
-__Easy Problems Solution : 59 __
-__Medium Problems Solution : 6__  
-__Hard Problems Solution : 0__
+__Easy Problems Solution : 59 __  
+__Medium Problems Solution : 6__    
+__Hard Problems Solution : 0__  
 
   LeetCode Profile Link :https://leetcode.com/AlfaBinomialx/
