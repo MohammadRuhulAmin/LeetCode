@@ -107,3 +107,9 @@ Employee t2
 ON t1.employee_id = t2.employee_id
 GROUP BY
 t1.project_id
+
+
+-- 627. Swap Salary
+UPDATE Salary
+SET
+Sex = if(sex = 'm','f','m')
