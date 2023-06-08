@@ -169,4 +169,21 @@ SELECT  user_id,COUNT(user_id) AS followers_count
 FROM Followers
 GROUP BY user_id
 ORDER BY user_id ASC
+
+
+
+
+-- 1731. The Number of Employees Which Report to Each Employee
+WITH TempTbl AS(
+  SELECT reports_to AS employee_id,COUNT(employee_id) AS reports_count,
+  ROUND(AVG(age),0) AS average_age 
+  FROM Employees
+  WHERE reports_to is NOT NULL
+  GROUP BY reports_to
+)
+SELECT TempTbl.employee_id,joinTbl.name,TempTbl.reports_count,TempTbl.average_age 
+FROM TempTbl
+JOIN Employees joinTbl
+ON TempTbl.employee_id = joinTbl.employee_id
+ORDER BY TempTbl.employee_id ASC 
  
