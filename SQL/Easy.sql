@@ -162,8 +162,6 @@ WHERE
 (low_fats = 'Y' AND recyclable = 'Y')
 
 
-
-
 -- 1729. Find Followers Count
 SELECT  user_id,COUNT(user_id) AS followers_count
 FROM Followers
