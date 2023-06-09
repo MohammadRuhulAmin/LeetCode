@@ -171,8 +171,6 @@ GROUP BY user_id
 ORDER BY user_id ASC
 
 
-
-
 -- 1731. The Number of Employees Which Report to Each Employee
 WITH TempTbl AS(
   SELECT reports_to AS employee_id,COUNT(employee_id) AS reports_count,
@@ -181,13 +179,12 @@ WITH TempTbl AS(
   WHERE reports_to is NOT NULL
   GROUP BY reports_to
 )
+
 SELECT TempTbl.employee_id,joinTbl.name,TempTbl.reports_count,TempTbl.average_age 
 FROM TempTbl
 JOIN Employees joinTbl
 ON TempTbl.employee_id = joinTbl.employee_id
-ORDER BY TempTbl.employee_id ASC 
-
-
+ORDER BY TempTbl.employee_id ASC
 
 
 -- 1407. Top Travellers
@@ -198,4 +195,6 @@ WITH CTE AS(
 SELECT t1.name,IF(CTE.travelled_distance IS NULL,0,CTE.travelled_distance) AS travelled_distance FROM Users t1
 LEFT JOIN CTE ON t1.id = CTE.user_id
 ORDER BY travelled_distance DESC, name ASC
+
+
  
