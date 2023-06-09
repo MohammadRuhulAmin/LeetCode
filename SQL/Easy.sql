@@ -220,4 +220,18 @@ SELECT
 FROM Activities
 GROUP BY sell_date
 ORDER BY sell_date
+
+
+-- 1587. Bank Account Summary II
+WITH CTE AS(
+    SELECT account,SUM(amount) AS balance 
+    FROM Transactions
+    GROUP By account
+
+)SELECT u.name AS NAME,CTE.balance AS BALANCE FROM Users u
+JOIN CTE
+ON
+u.account = CTE.account
+WHERE BALANCE > 10000
+
  
