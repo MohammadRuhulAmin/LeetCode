@@ -204,4 +204,14 @@ FROM Users
 WHERE mail REGEXP '^[A-Za-z]([A-Za-z0-9\.\_\-]+)?@leetcode[.]com';
 
 
+-- 1633. Percentage of Users Attended a Contest
+
+SELECT contest_id,
+       ROUND(100*COUNT(contest_id)/(SELECT COUNT(DISTINCT user_id) FROM USERS),2)      AS     percentage 
+FROM Register 
+GROUP BY contest_id
+ORDER BY percentage DESC,
+         contest_id ASC
+
+
  
