@@ -186,4 +186,16 @@ FROM TempTbl
 JOIN Employees joinTbl
 ON TempTbl.employee_id = joinTbl.employee_id
 ORDER BY TempTbl.employee_id ASC 
+
+
+
+
+-- 1407. Top Travellers
+WITH CTE AS(
+  SELECT user_id,SUM(distance) AS travelled_distance FROM Rides
+  GROUP BY user_id
+)
+SELECT t1.name,IF(CTE.travelled_distance IS NULL,0,CTE.travelled_distance) AS travelled_distance FROM Users t1
+LEFT JOIN CTE ON t1.id = CTE.user_id
+ORDER BY travelled_distance DESC, name ASC
  
