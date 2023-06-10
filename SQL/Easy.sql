@@ -294,3 +294,8 @@ WHERE store2 is NOT NULL
 UNION
 SELECT product_id,'store3' AS store3,store3 AS price FROM Products
 WHERE store3 is NOT NULL
+
+
+
+
+
