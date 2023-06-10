@@ -280,3 +280,17 @@ ORDER BY employee_id ASC
     IF(employee_id%2 !=0 AND name NOT LIKE('M%'),salary,0) AS bonus
 FROM  Employees
 ORDER BY employee_id
+
+
+
+
+--1795. Rearrange Products Table
+
+SELECT product_id,'store1' AS store,store1 AS price FROM Products
+WHERE store1 is NOT NULL
+UNION
+SELECT product_id,'store2' AS store,store2 AS price FROM Products
+WHERE store2 is NOT NULL
+UNION
+SELECT product_id,'store3' AS store3,store3 AS price FROM Products
+WHERE store3 is NOT NULL
