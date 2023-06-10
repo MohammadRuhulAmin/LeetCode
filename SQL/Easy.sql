@@ -249,4 +249,13 @@ SELECT date_id,
 FROM DailySales
 GROUP BY date_id,make_name
 
+
+
+--1741. Find Total Time Spent by Each Employee
+
+SELECT event_day AS day ,emp_id,sum(out_time - in_time) AS total_time
+FROM Employees
+GROUP BY emp_id,event_day
+# WHERE emp_id = 1 AND event_day = "2020-11-28"
+
  
