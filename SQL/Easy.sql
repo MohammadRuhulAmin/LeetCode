@@ -296,6 +296,12 @@ SELECT product_id,'store3' AS store3,store3 AS price FROM Products
 WHERE store3 is NOT NULL
 
 
+--596. Classes More Than 5 Students
+SELECT class FROM Courses
+GROUP BY class
+HAVING COUNT(class)>4
+
+
 
 
 
