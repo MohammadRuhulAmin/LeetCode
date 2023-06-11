@@ -18,3 +18,15 @@ WHERE income BETWEEN 20000 AND 50000
 UNION
 SELECT 'High Salary' AS 'category',COUNT(income) AS accounts_count FROM Accounts
 WHERE income > 50000
+
+
+--177. Nth Highest Salary
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN 
+  SET N = N-1;
+  RETURN (
+      SELECT DISTINCT salary FROM Employee ORDER BY salary DESC 
+      LIMIT 1 OFFSET N
+  );
+END 
