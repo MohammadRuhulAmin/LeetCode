@@ -391,3 +391,10 @@ FROM Patients
 WHERE conditions
 LIKE '% DIAB1%'
 OR conditions LIKE 'DIAB1%'
+
+
+
+-- 586. Customer Placing the Largest Number of Orders
+SELECT customer_number FROM Orders
+GROUP BY customer_number
+Order BY COUNT(customer_number) DESC LIMIT 1
