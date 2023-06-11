@@ -30,3 +30,14 @@ BEGIN
       LIMIT 1 OFFSET N
   );
 END 
+
+
+
+
+--180. Consecutive Numbers
+WITH CTE AS(
+        SELECT id,num,
+                LEAD(num)OVER() AS next1,LEAD(num,2)OVER() AS next2
+        FROM Logs
+)SELECT DISTINCT CTE.num AS 'ConsecutiveNums' FROM CTE
+WHERE CTE.num = CTE.next1 AND CTE.num = CTE.next2
