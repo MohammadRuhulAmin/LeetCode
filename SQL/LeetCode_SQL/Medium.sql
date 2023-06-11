@@ -41,3 +41,17 @@ WITH CTE AS(
         FROM Logs
 )SELECT DISTINCT CTE.num AS 'ConsecutiveNums' FROM CTE
 WHERE CTE.num = CTE.next1 AND CTE.num = CTE.next2
+
+
+
+
+--184. Department Highest Salary
+SELECT D.name AS Department,E.name AS Employee,salary AS Salary
+FROM Employee E
+LEFT JOIN Department D
+ON E.departmentId= D.id
+ WHERE (departmentId,salary) 
+ IN(
+  SELECT departmentId,MAX(salary) FROM Employee
+  GROUP BY departmentId
+)
