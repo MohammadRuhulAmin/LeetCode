@@ -213,6 +213,7 @@ ORDER BY percentage DESC,
 
 
 --1484. Group Sold Products By The Date
+
 SELECT 
     sell_date,
     COUNT(DISTINCT product) AS num_sold,
@@ -235,8 +236,8 @@ u.account = CTE.account
 WHERE BALANCE > 10000
 
 
-
 --1683. Invalid Tweets
+
 SELECT tweet_id FROM Tweets
 WHERE LENGTH(content) >15
 
@@ -309,6 +310,15 @@ SELECT
   MIN(event_date) AS first_login
   FROM Activity 
   GROUP BY player_id
+
+
+
+--1050. Actors and Directors Who Cooperated At Least Three Times
+
+SELECT actor_id,director_id FROM ActorDirector
+GROUP BY actor_id,director_id
+HAVING COUNT(*)>2
+
 
 
 
