@@ -5,7 +5,7 @@ vector<int> findDuplicates(vector<int>& nums) {
 	for(int i = 0;i<nums.size();i++){
 		int index = nums[i];
 		if(index<0)index = abs(index);
-		if(nums[index]>0)nums[index] *=-1;
+		if(nums[index-1]>0)nums[index-1] *=-1;
 		else ans.push_back(index);
 	}
 	for(auto x:nums)cout << x << " ";
