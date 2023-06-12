@@ -55,3 +55,11 @@ ON E.departmentId= D.id
   SELECT departmentId,MAX(salary) FROM Employee
   GROUP BY departmentId
 )
+
+
+-- 1045. Customers Who Bought All Products
+
+SELECT customer_id
+FROM Customer 
+GROUP BY customer_id
+HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM Product)
