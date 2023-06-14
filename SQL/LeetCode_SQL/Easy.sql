@@ -398,3 +398,18 @@ OR conditions LIKE 'DIAB1%'
 SELECT customer_number FROM Orders
 GROUP BY customer_number
 Order BY COUNT(customer_number) DESC LIMIT 1
+
+
+
+-- 1581. Customer Who Visited but Did Not Make Any Transactions
+
+WITH CTE AS(
+
+  select v.customer_id,v.visit_id,t.transaction_id,t.amount FROM
+  Visits v LEFT JOIN Transactions t
+  ON
+  v.visit_id = t.visit_id
+  WHERE t.transaction_id IS NULL
+)SELECT CTE.customer_id,COUNT(CTE.visit_id) AS "count_no_trans"
+ FROM CTE 
+GROUP BY CTE.customer_id;
