@@ -1,3 +1,4 @@
+-- CREATING TABLE
 CREATE TABLE employees(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(30),
@@ -5,6 +6,7 @@ CREATE TABLE employees(
     salary int
 );
 
+-- CREATING ROWS
 
 INSERT INTO employees(name,dep_id,salary)VALUES("ruhul",1,300);
 INSERT INTO employees(name,dep_id,salary)VALUES("sakib",1,20000);
