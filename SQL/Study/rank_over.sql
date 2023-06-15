@@ -23,3 +23,12 @@ RANK() OVER(ORDER BY salary DESC,dep_id ASC) AS rnk ,
 DENSE_RANK() OVER(ORDER BY salary DESC) AS drnk,
 ROW_NUMBER() OVER(ORDER BY salary DESC ) AS rw
 FROM employees;
+
+
+
+SELECT id ,name , dep_id,salary ,
+RANK() OVER(PARTITION BY dep_id ORDER BY salary ASC) AS rnk ,
+DENSE_RANK() OVER(PARTITION BY dep_id ORDER BY salary ASC) AS drnk,
+ROW_NUMBER() OVER(PARTITION BY dep_id ORDER BY salary ASC) AS rw
+FROM employees;
+
