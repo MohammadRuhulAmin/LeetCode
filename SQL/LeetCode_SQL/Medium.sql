@@ -63,3 +63,13 @@ SELECT customer_id
 FROM Customer 
 GROUP BY customer_id
 HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM Product)
+
+
+-- 1070. Product Sales Analysis III
+
+WITH cte AS(
+  SELECT product_id,year,quantity,price ,
+  RANK() OVER(PARTITION BY product_id ORDER BY year ASC) AS rnk
+  FROM Sales
+)SELECT cte.product_id,cte.year AS first_year,cte.quantity,cte.price
+ FROM cte WHERE cte.rnk = 1
