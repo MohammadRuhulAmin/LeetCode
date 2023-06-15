@@ -413,3 +413,28 @@ WITH CTE AS(
 )SELECT CTE.customer_id,COUNT(CTE.visit_id) AS "count_no_trans"
  FROM CTE 
 GROUP BY CTE.customer_id;
+
+
+
+
+-- 1280. Students and Examinations
+
+WITH cte1 AS(
+    SELECT st.student_id,st.student_name,sj.subject_name 
+    FROM Students st
+    CROSS JOIN
+    Subjects sj 
+),cte2 AS(
+    SELECT ex.student_id, ex.subject_name, COUNT(ex.subject_name) AS attended_exams
+    FROM Examinations ex
+    GROUP BY ex.student_id,ex.subject_name
+
+)
+
+SELECT cte1.student_id,cte1.student_name,cte1.subject_name,if(cte2.attended_exams IS NULL,0,cte2.attended_exams) as attended_exams
+FROM cte1 LEFT JOIN cte2
+ON cte1.student_id = cte2.student_id
+AND cte1.subject_name = cte2.subject_name
+ORDER BY cte1.student_id,cte1.subject_name
+
+
