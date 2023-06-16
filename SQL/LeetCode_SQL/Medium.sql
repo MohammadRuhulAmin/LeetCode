@@ -113,7 +113,7 @@ FROM CTE GROUP BY CTE.id
 ORDER BY COUNT(CTE.id) DESc
 LIMIT 1;
 
-
+-- Alternative solution
 WITH cte1 AS(
   SELECT requester_id AS id,accepter_id
   FROM RequestAccepted 
