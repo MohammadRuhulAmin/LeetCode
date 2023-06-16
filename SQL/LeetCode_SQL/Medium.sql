@@ -113,4 +113,19 @@ FROM CTE GROUP BY CTE.id
 ORDER BY COUNT(CTE.id) DESc
 LIMIT 1;
 
+
+WITH cte1 AS(
+  SELECT requester_id AS id,accepter_id
+  FROM RequestAccepted 
+
+  UNION
+  SELECT accepter_id AS id ,requester_id
+  FROM RequestAccepted
+
+),cte2 AS(
+  SELECT cte1.id,COUNT(cte1.id) AS 'num'
+  FROM cte1 GROUP BY cte1.id 
+  ORDER BY COUNT(cte1.id) DESC
+)SELECT cte2.id , MAX(cte2.num) AS 'num' FROM cte2;
+
 -- ##################################################################
