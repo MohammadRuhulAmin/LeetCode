@@ -97,3 +97,20 @@ GROUP BY cte.user_id
 
 
  --###########################################################
+
+--############################################################
+ -- 602. Friend Requests II: Who Has the Most Friends
+WITH cte AS(
+  SELECT requester_id AS id,accepter_id
+  FROM RequestAccepted 
+
+  UNION
+  SELECT accepter_id AS id ,requester_id
+  FROM RequestAccepted
+
+)SELECT CTE.id,COUNT(CTE.id) AS 'num'
+FROM CTE GROUP BY CTE.id 
+ORDER BY COUNT(CTE.id) DESc
+LIMIT 1;
+
+-- ##################################################################
