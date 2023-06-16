@@ -129,3 +129,11 @@ WITH cte1 AS(
 )SELECT cte2.id , MAX(cte2.num) AS 'num' FROM cte2;
 
 -- ##################################################################
+-- 1204. Last Person to Fit in the Bus
+WITH CTE AS(
+    SELECT *, SUM(weight) 
+    OVER (ORDER BY turn ASC ROWS BETWEEN UNBOUNDED    PRECEDING AND CURRENT    ROW) AS 'sum'
+FROM Queue
+)SELECT  CTE.person_name FROM CTE WHERE CTE.sum <=1000 ORDER BY CTE.sum DESC LIMIT 1 ;
+
+-- ##################################################################
