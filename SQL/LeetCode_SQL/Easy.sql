@@ -471,4 +471,13 @@ ORDER BY cte1.student_id,cte1.subject_name
 
 --###################################################################
 
+-- 1378. Replace Employee ID With The Unique Identifier
+SELECT u.unique_id,e.name
+FROM Employees e
+LEFT JOIN
+EmployeeUNI u
+ON
+e.id = u.id
+
+-- ###################################################################
 
