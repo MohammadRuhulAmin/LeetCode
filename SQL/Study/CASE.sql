@@ -8,10 +8,11 @@ END AS Alias
 FROM TableName
 
 Example: 
-    SELECT id,student_name,num
+SELECT id, student_name, num,
     CASE
-        WHEN num>=80 AND  num<=100 THEN "A+"
-        WHEN num>=70 AND num<=79 THEN "A"
-        WHEN num>=59 AND num<=69 THEN "A-"
+        WHEN num >= 80 AND num <= 100 THEN 'A+'
+        WHEN num >= 70 AND num <= 79 THEN 'A'
+        WHEN num >= 59 AND num <= 69 THEN 'A-'
+        ELSE 'Golden A+'
     END AS Grade
-    FROM Marksheet;
+FROM Marksheet;
