@@ -492,6 +492,20 @@ FROM CTE
 GROUP BY CTE.query_name;
 
 
+-- Alternative solution
+
+WITH CTE AS(
+  SELECT query_name, rating/position AS 'ratio',rating,
+  CASE WHEN rating < 3 THEN rating END AS 'rating_cond'
+  FROM Queries
+)SELECT CTE.query_name,ROUND(SUM(CTE.ratio)/COUNT(*),2) AS 'quality',
+ROUND(SUM(CASE WHEN CTE.rating_cond IS NOT NULL THEN 1 ELSE 0 END)/COUNT(*)*100,2)
+AS 'poor_query_percentage'
+FROM CTE 
+GROUP BY CTE.query_name;
+
+
+-- ####################################################################
 
 
 
