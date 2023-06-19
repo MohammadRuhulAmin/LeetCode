@@ -480,4 +480,20 @@ ON
 e.id = u.id
 
 -- ###################################################################
+-- 1211. Queries Quality and Percentage
+WITH CTE AS(
+  SELECT query_name, rating/position AS 'ratio',rating,
+  CASE WHEN rating < 3 THEN rating END AS 'rating_cond'
+  FROM Queries
+)SELECT CTE.query_name,ROUND(SUM(CTE.ratio)/(SELECT COUNT(query_name) FROM Queries WHERE query_name = CTE.query_name),2) AS 'quality',
+ROUND(SUM(CASE WHEN CTE.rating_cond IS NOT NULL THEN 1 ELSE 0 END)/(SELECT COUNT(query_name) FROM Queries WHERE query_name = CTE.query_name)*100,2)
+AS 'poor_query_percentage'
+FROM CTE 
+GROUP BY CTE.query_name;
+
+
+
+
+
+
 
