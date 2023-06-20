@@ -148,3 +148,8 @@ SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS 'approved_total_amou
 FROM 
 Transactions
 GROUP BY country,month
+
+-- ##################################################################
+ -- 178. Rank Scores
+ SELECT score, DENSE_RANK() OVER(ORDER BY score DESC) AS 'rank'
+ FROM Scores ORDER BY score DESC;

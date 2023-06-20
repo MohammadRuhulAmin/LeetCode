@@ -463,7 +463,8 @@ WITH cte1 AS(
     FROM Examinations ex
     GROUP BY ex.student_id,ex.subject_name
 
-)SELECT cte1.student_id,cte1.student_name,cte1.subject_name,if(cte2.attended_exams IS NULL,0,cte2.attended_exams) as attended_exams
+)SELECT cte1.student_id,cte1.student_name,cte1.subject_name,
+if(cte2.attended_exams IS NULL,0,cte2.attended_exams) as attended_exams
 FROM cte1 LEFT JOIN cte2
 ON cte1.student_id = cte2.student_id
 AND cte1.subject_name = cte2.subject_name
