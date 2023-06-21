@@ -42,8 +42,6 @@ WITH CTE AS(
 )SELECT DISTINCT CTE.num AS 'ConsecutiveNums' FROM CTE
 WHERE CTE.num = CTE.next1 AND CTE.num = CTE.next2
 -- #################################################################################
-
-
 -- #################################################################################
 --184. Department Highest Salary
 SELECT D.name AS Department,E.name AS Employee,salary AS Salary
@@ -92,11 +90,10 @@ cte.join_date, SUM(
     END 
 )AS 'orders_in_2019'
 FROM cte 
-
 GROUP BY cte.user_id
 
 
- --###########################################################
+--###########################################################
 
 --############################################################
  -- 602. Friend Requests II: Who Has the Most Friends
@@ -153,3 +150,26 @@ GROUP BY country,month
  -- 178. Rank Scores
  SELECT score, DENSE_RANK() OVER(ORDER BY score DESC) AS 'rank'
  FROM Scores ORDER BY score DESC;
+
+--###################################################################
+
+-- 1393. Capital Gain/Loss
+WITH CTE1 AS(
+  SELECT stock_name,operation,SUM(price) AS 'Gain'
+  FROM Stocks
+  WHERE operation = 'Buy'
+  GROUP BY stock_name
+),
+CTE2 AS(
+  SELECT stock_name,operation,SUM(price) AS 'Loss' 
+  FROM Stocks
+  WHERE operation = 'Sell'
+  GROUP BY stock_name
+)SELECT CTE1.stock_name,
+# CTE1.operation,
+# CTE1.Gain,CTE2.Loss,
+(CTE2.Loss - CTE1.Gain) AS 'capital_gain_loss'
+FROM CTE1
+JOIN CTE2
+ON CTE1.stock_name = CTE2.stock_name;
+
