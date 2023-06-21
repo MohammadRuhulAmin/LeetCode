@@ -166,10 +166,9 @@ CTE2 AS(
   WHERE operation = 'Sell'
   GROUP BY stock_name
 )SELECT CTE1.stock_name,
-# CTE1.operation,
-# CTE1.Gain,CTE2.Loss,
 (CTE2.Loss - CTE1.Gain) AS 'capital_gain_loss'
 FROM CTE1
 JOIN CTE2
 ON CTE1.stock_name = CTE2.stock_name;
+--######################################################################
 
