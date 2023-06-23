@@ -509,6 +509,13 @@ GROUP BY CTE.query_name;
 -- ####################################################################
 
 
-
-
-
+-- ####################################################################
+-- 607. Sales Person
+SELECT name FROM SalesPerson
+WHERE sales_id  NOT IN(SELECT o.sales_id FROM Company c
+LEFT JOIN
+Orders o
+ON o.com_id = c.com_id
+WHERE c.com_id IN(1)
+)
+-- ####################################################################
