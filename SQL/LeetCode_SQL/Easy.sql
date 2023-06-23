@@ -508,7 +508,6 @@ GROUP BY CTE.query_name;
 
 -- ####################################################################
 
-
 -- ####################################################################
 -- 607. Sales Person
 SELECT name FROM SalesPerson
@@ -519,3 +518,27 @@ ON o.com_id = c.com_id
 WHERE c.com_id IN(1)
 )
 -- ####################################################################
+
+
+-- ####################################################################
+-- 1661. Average Time of Process per Machine
+WITH CTE1 AS(
+    SELECT * FROM Activity
+    WHERE activity_type = 'start'
+),
+CTE2 AS(
+    SELECT * FROM Activity
+    WHERE activity_type = 'end'
+)SELECT CTE1.machine_id,
+    # CTE2.timestamp AS 'End', 
+    # CTE1.timestamp AS 'Start',
+    # CTE2.timestamp - CTE1.timestamp AS 'calc',
+    ROUND(SUM(CTE2.timestamp - CTE1.timestamp)/COUNT(CTE1.machine_id),3) AS 'processing_time'
+    FROM CTE1
+    INNER JOIN
+    CTE2
+    ON CTE1.process_id = CTE2.process_id
+    AND
+    CTE1.machine_id = CTE2.machine_id
+    GROUP BY CTE1.machine_id
+    -- ############################################################################
