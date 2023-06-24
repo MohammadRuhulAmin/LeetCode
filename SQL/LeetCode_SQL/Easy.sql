@@ -559,3 +559,10 @@ WHERE
 S.product_id NOT IN (
   SELECT CTE.product_id FROM CTE
 );
+
+
+-- ##########################################################################
+-- 197. Rising Temperature
+SELECT W1.id AS "ID" FROM Weather W1,Weather W2
+WHERE W1.temperature > W2.temperature
+AND DATEDIFF(W1.recordDate,W2.recordDate) = 1
