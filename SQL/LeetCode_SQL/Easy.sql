@@ -542,3 +542,20 @@ CTE2 AS(
     CTE1.machine_id = CTE2.machine_id
     GROUP BY CTE1.machine_id
     -- ############################################################################
+
+
+
+-- ############################################################################
+-- 1084. Sales Analysis III
+WITH CTE AS (
+   SELECT product_id FROM Sales
+   WHERE sale_date < "2019-01-01" OR
+   sale_date > "2019-03-31"
+)
+SELECT DISTINCT S.product_id,P.product_name FROM Sales s
+LEFT JOIN Product P
+ON S.product_id = P.product_id
+WHERE
+S.product_id NOT IN (
+  SELECT CTE.product_id FROM CTE
+);
