@@ -566,3 +566,19 @@ S.product_id NOT IN (
 SELECT W1.id AS "ID" FROM Weather W1,Weather W2
 WHERE W1.temperature > W2.temperature
 AND DATEDIFF(W1.recordDate,W2.recordDate) = 1
+
+
+-- ########################################################################
+-- 1141. User Activity for the Past 30 Days I
+
+SELECT 
+activity_date AS 'day',
+COUNT(DISTINCT user_id) AS 'active_users'
+FROM Activity
+WHERE
+activity_date BETWEEN
+DATE_ADD("2019-07-27", INTERVAL - 29 DAY)
+AND "2019-07-27"
+GROUP BY activity_date;
+
+-- ##################################################
