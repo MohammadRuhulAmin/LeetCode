@@ -172,3 +172,34 @@ JOIN CTE2
 ON CTE1.stock_name = CTE2.stock_name;
 --######################################################################
 
+-- 1934. Confirmation Rate
+-- #####################################################################
+WITH CTE AS (
+  SELECT 
+  S.user_id AS 'suid',S.time_stamp AS 'ststm',
+  C.user_id AS 'cuid',C.time_stamp AS 'ctstm',C.action,
+  SUM(CASE WHEN C.action = 'timeout' THEN 1 ELSE 0 END) AS 'stout',
+  SUM(CASE WHEN C.action = 'confirmed' THEN 1 ELSE 0 END) AS 'sconf'
+  FROM Signups S
+  LEFT JOIN
+  Confirmations C
+  ON S.user_id = C.user_id
+  GROUP BY S.user_id
+  ORDER BY S.user_id ASC
+),
+CTEx AS(
+  SELECT CTE.suid AS 'user_id', 
+  ROUND(CTE.sconf/SUM(CTE.stout + CTE.sconf),2) AS 'crate'
+  FROM CTE
+  GROUP BY CTE.suid
+)SELECT CTEx.user_id ,
+CASE WHEN CTEx.crate IS NOT NULL THEN CTEx.crate ELSE 0 END AS 'confirmation_rate'
+FROM CTEx;
+
+-- ##########################################################################
+
+
+
+
+
+
