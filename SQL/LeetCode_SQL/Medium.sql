@@ -210,6 +210,19 @@ SELECT (
 ORDER BY id ASC
 
 
+-- #######################################################
+-- 550. Game Play Analysis IV
+WITH CTE1 AS (
+  SELECT player_id,MIN(event_date) AS 'first_log' FROM Activity
+  GROUP BY player_id
+),
+CTE2 AS (
+  SELECT CTE1.player_id,
+  CTE1.first_log,
+  DATE_ADD(CTE1.first_log,INTERVAL 1 DAY) AS 'next' FROM CTE1
+)SELECT ROUND(COUNT(*)/(SELECT COUNT(DISTINCT player_id) FROM Activity),2) AS 'fraction' FROM CTE2
+WHERE (CTE2.player_id,CTE2.next) IN (SELECT player_id,event_date FROM Activity)
+
 
 
 
