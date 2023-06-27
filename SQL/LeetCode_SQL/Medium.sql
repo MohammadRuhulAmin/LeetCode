@@ -198,6 +198,17 @@ FROM CTEx;
 
 -- ##########################################################################
 
+-- 626. Exchange Seats
+SELECT (
+    CASE 
+        WHEN id%2 != 0 AND id != total_counts THEN id+1
+        WHEN id%2 !=0 AND id = total_counts THEN id
+        ELSE id - 1
+    END 
+) AS id,student FROM Seat,
+(SELECT COUNT(*) AS total_counts FROM Seat) AS subquery
+ORDER BY id ASC
+
 
 
 
