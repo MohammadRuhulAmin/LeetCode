@@ -224,6 +224,25 @@ CTE2 AS (
 WHERE (CTE2.player_id,CTE2.next) IN (SELECT player_id,event_date FROM Activity)
 
 
+-- ###############################################
+-- 1174. Immediate Food Delivery II
+WITH CTE1 AS(
+  SELECT customer_id,MIN(order_date) AS 'order_date' FROM 
+  Delivery
+  GROUP BY customer_id
+),
+CTE2 AS (
+  SELECT CTE1.* FROM CTE1
+  WHERE (CTE1.customer_id,CTE1.order_date) IN
+  (SELECT D.customer_id,D.customer_pref_delivery_date FROM Delivery D)
+)
+SELECT ROUND( 100*COUNT(CTE2.customer_id)/countQuery.cid,2) AS 'immediate_percentage'
+FROM CTE2,(SELECT COUNT(DISTINCT customer_id) AS cid FROM  Delivery) AS countQuery
+
+-- ##############################################
+
+
+
 
 
 
