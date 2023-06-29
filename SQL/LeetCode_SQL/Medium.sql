@@ -253,4 +253,16 @@ END
 AS 'type'
 FROM Tree
 
+-- ###########################################################
+--570. Managers with at Least 5 Direct Reports
+WITH CTE AS (
+  SELECT managerId , COUNT(managerId) AS 'cnt'
+  FROM Employee
+  WHERE managerId NOT IN ('None')
+  GROUP BY managerId
+
+)SELECT E.name FROM Employee E
+INNER JOIN CTE 
+ON E.id = CTE.managerId
+WHERE CTE.cnt >=5
 
