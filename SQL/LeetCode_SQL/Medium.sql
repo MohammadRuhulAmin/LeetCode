@@ -266,3 +266,43 @@ INNER JOIN CTE
 ON E.id = CTE.managerId
 WHERE CTE.cnt >=5
 
+-- ###################################################
+-- 1341. Movie Rating
+WITH CTE1 AS (
+    SELECT user_id,COUNT(movie_id) AS 't_rate'
+    FROM MovieRating 
+    GROUP BY user_id
+),
+CTE2 AS (
+    SELECT CTE1.user_id,U.name , CTE1.t_rate 
+    FROM CTE1
+    INNER JOIN 
+    Users U
+    ON CTE1.user_id = U.user_id
+),
+CTE3_f AS (
+    SELECT MIN(CTE2.name) AS 'results'
+    FROM CTE2 WHERE CTE2.t_rate =  (SELECT MAX(CTE2.t_rate) FROM CTE2)
+),
+CTE3 AS (
+    SELECT movie_id,AVG(rating) AS 'rt' FROM MovieRating
+    WHERE created_at BETWEEN "2020-02-01" AND "2020-02-29"
+    GROUP BY movie_id
+),
+CTE4 AS (
+  SELECT CTE3.movie_id, M.title ,CTE3.rt 
+  FROM CTE3 
+  INNER JOIN Movies M
+  ON 
+  CTE3.movie_id = M.movie_id 
+),
+CTE5 AS (
+  SELECT MIN(CTE4.title) AS 'results' FROM CTE4
+  WHERE  CTE4.rt = (SELECT MAX(CTE4.rt) FROM CTE4)
+)
+
+SELECT CTE3_f.results FROM CTE3_f
+UNION ALL
+SELECT CTE5.results FROM CTE5
+
+-- ########################################################33
