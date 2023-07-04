@@ -311,16 +311,16 @@ SELECT CTE5.results FROM CTE5
 -- 1164. Product Price at a Given Date
 WITH CTE AS (
     SELECT * FROM (
-    SELECT 
-        P.product_id,
-        P.change_date,
-        P.new_price,
-            ROW_NUMBER() OVER(PARTITION BY P.product_id ORDER BY P.change_date DESC) AS 'rnk'
-        FROM Products P 
-        WHERE  
-        P.change_date <='2019-08-16'
+      SELECT 
+          P.product_id,
+          P.change_date,
+          P.new_price,
+              ROW_NUMBER() OVER(PARTITION BY P.product_id ORDER BY P.change_date DESC) AS 'rnk'
+          FROM Products P 
+          WHERE  
+          P.change_date <='2019-08-16'
 
-    ) AS sqry
+      ) AS sqry
     GROUP BY sqry.product_id
     ORDER BY sqry.change_date DESC
 )
