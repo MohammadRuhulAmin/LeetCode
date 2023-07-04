@@ -305,4 +305,34 @@ SELECT CTE3_f.results FROM CTE3_f
 UNION ALL
 SELECT CTE5.results FROM CTE5
 
--- ########################################################33
+-- ########################################################
+
+
+-- 1164. Product Price at a Given Date
+WITH CTE AS (
+    SELECT * FROM (
+    SELECT 
+        P.product_id,
+        P.change_date,
+        P.new_price,
+            ROW_NUMBER() OVER(PARTITION BY P.product_id ORDER BY P.change_date DESC) AS 'rnk'
+        FROM Products P 
+        WHERE  
+        P.change_date <='2019-08-16'
+
+    ) AS sqry
+    GROUP BY sqry.product_id
+    ORDER BY sqry.change_date DESC
+)
+SELECT DISTINCT P.product_id, IF(C.new_price IS NULL ,10 , C.new_price) AS 'price'
+FROM CTE C
+RIGHT JOIN 
+Products P 
+ON 
+C.product_id = P.product_id
+
+-- ########################
+
+
+
+
