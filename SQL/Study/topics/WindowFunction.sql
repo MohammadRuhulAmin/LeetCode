@@ -1,4 +1,10 @@
 
+WHEN YOU are using window function you must use over() clause 
+like LEAD() OVER(),LAG() OVER(),MAX() OVER() like this. 
+Window function creates window (it creates a partition).Inside each of 
+the partition we can again create some sub set of records which is called frame.
+So we can say that, Frame is some subset of partitions.
+
 Lets say you want to get the top 3 emploees who get the highest salary. Or lets say you want to display the maximum and minimum salary employee of each Department.
 The Window Functions are RANK(),DENSE_RANK(),OVER(),LEAD(),LAG().
 
@@ -78,7 +84,21 @@ Note: The LEAD() function is available in MySQL 8.0 and later versions. If you a
 
 
 
+FIRST_VALUE():
+    Qn : Write a query to get the most expensive product under each category.
+    SELECT *,FIRST_VALUE(product_name)OVER(PARTITION BY product_category ORDER BY price DESC) AS 'exp_prod'
+    FROM Products;
+
+LAST_VALUE():
+    Qn : Write a query to get the min amount of product under each category.
+    SELECT LAST_VALUE(product_name)OVER(PARTITION BY product_category ORDER BY price 
+    DESC RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as 'less_prod'
+    FROM Products;
+
 
 
 
 TUTORIAL LINK : https://www.youtube.com/watch?v=Ww71knvhQ-s&t=11s
+
+
+Tutorial Link : https://www.youtube.com/watch?v=zAmJPdZu8Rg
