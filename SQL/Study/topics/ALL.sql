@@ -11,7 +11,31 @@ it will return all the departments including repeated departments in the column.
 Lets say i want to display the products where the products price will be less than all the products of Electornic. 
 Then the query will be;
 
+Table : 
+    CREATE TABLE products (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100),
+        price DECIMAL(10,2),
+        category VARCHAR(50)
+    );
+Insert : 
+    INSERT INTO products (name, price, category)
+    VALUES ('Laptop', 1000, 'Electronics');
 
+    INSERT INTO products (name, price, category)
+    VALUES ('Smartphone', 800, 'Electronics');
+
+    INSERT INTO products (name, price, category)
+    VALUES ('T-shirt', 20, 'Clothing');
+
+    INSERT INTO products (name, price, category)
+    VALUES ('Sunglasses', 80, 'Accessories'),
+        ('Camera', 1200, 'Electronics'),
+        ('Jeans', 70, 'Clothing');
+
+
+Solution Query:
+------------------------------
 SELECT name
 FROM products
 WHERE price < ALL (SELECT price FROM products WHERE category = 'Electronics');
