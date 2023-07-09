@@ -1,0 +1,24 @@
+SET @number1 = 10;
+SET @number2 = 20;
+SET @number3 = 15;
+
+SELECT
+  CASE
+    WHEN @number1 > @number2 AND @number1 > @number3 THEN 'number1 is the largest'
+    WHEN @number2 > @number1 AND @number2 > @number3 THEN 'number2 is the largest'
+    WHEN @number3 > @number1 AND @number3 > @number2 THEN 'number3 is the largest'
+    ELSE 'There is no distinct largest number'
+  END AS result;
+
+
+  or 
+
+SET @number1 = 10;
+SET @number2 = 20;
+SET @number3 = 15;
+
+SELECT 
+  IF(@number1 > @number2 AND @number1 > @number3, 'Number 1 is the largest', NULL) AS 'x',
+  IF(@number2 > @number1 AND @number2 > @number3, 'Number 2 is the largest', NULL) AS 'y',
+  IF(@number3 > @number1 AND @number3 > @number2, 'Number 3 is the largest', NULL) AS 'result';
+
