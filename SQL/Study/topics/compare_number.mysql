@@ -13,6 +13,8 @@ SELECT
 
   or 
 
+not a good solution 
+
 SET @number1 = 10;
 SET @number2 = 20;
 SET @number3 = 15;
