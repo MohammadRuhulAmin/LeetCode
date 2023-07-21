@@ -12,6 +12,15 @@ SHOW INDEX command:
     
 
 
+making index during table creation:
+CREATE TABLE table_name(
+    id AUTO_INCREMENT UNIQUE,
+    name VARCHAR(30),
+    email VARCHAR(30),
+    INDEX index_name (name)
+)
+
+
 WHY we use indexin ? 
 ==> INDEX columns that are used for joins to imporve join performance.
 
