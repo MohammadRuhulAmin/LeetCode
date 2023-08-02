@@ -1,4 +1,6 @@
 
+https://www.youtube.com/watch?v=Rhz9HpqSan0
+
 Index command : 
     CREATE INDEX index_name 
     ON table_name(column1,column2,column3,....);
