@@ -582,3 +582,6 @@ AND "2019-07-27"
 GROUP BY activity_date;
 
 -- ##################################################
+-- 1173. Immediate Food Delivery I
+SELECT ROUND(SUM(order_date = customer_pref_delivery_date)*100/COUNT(*),2) as 'immediate_percentage'
+from Delivery;
