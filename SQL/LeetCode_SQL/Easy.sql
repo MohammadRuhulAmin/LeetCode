@@ -561,7 +561,7 @@ S.product_id NOT IN (
 );
 
 
--- ##########################################################################
+-- ########################################################################
 -- 197. Rising Temperature
 SELECT W1.id AS "ID" FROM Weather W1,Weather W2
 WHERE W1.temperature > W2.temperature
@@ -585,3 +585,16 @@ GROUP BY activity_date;
 -- 1173. Immediate Food Delivery I
 SELECT ROUND(SUM(order_date = customer_pref_delivery_date)*100/COUNT(*),2) as 'immediate_percentage'
 from Delivery;
+
+
+-- #################################################
+-- 2082. The Number of Rich Customers
+
+
+select count(*) as rich_count from (
+  select customer_id,amount,count(*) as rich_count from Store
+  where
+  amount>500 
+  group by customer_id
+
+)as tbl
