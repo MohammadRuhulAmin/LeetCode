@@ -14,7 +14,7 @@ int strStr(string haystack,string needle){
 			temp += haystack[j];
 			l++;
 		}
-		cout << temp << " " << endl;
+//		cout << temp << " " << endl;
 		if(temp == needle && !firstIndex)return i;
 	}
 	return -1;
